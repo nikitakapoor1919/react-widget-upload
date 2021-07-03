@@ -13,6 +13,7 @@ export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
   const hiddenFileInput = React.useRef(null);
   const [SelectedFile, setSelectedFile] = React.useState(null);
+  const [Show, setShow] = React.useState(false);
   const history=useHistory()
 
   const handleClickOpen = () => {
@@ -27,6 +28,7 @@ export default function FormDialog(props) {
     hiddenFileInput.current.click();
   };
   const handleChange = event => {
+    props.onSuccessChange(false)
     const fileUploaded = event.target.files[0];
     setSelectedFile(event.target.files[0])
     const timer1 = setTimeout(() => {
@@ -35,6 +37,13 @@ export default function FormDialog(props) {
     const timer = setTimeout(() => {
       props.onProgressChange(false)
       props.onSuccessChange(true)
+      setShow(true)
+    }, 7000);  
+  };
+  const handleChangeUpload = event => {
+    props.onProgressChange(true)
+    props.onSuccessChange(false)
+    const timer = setTimeout(() => {
       handleClickOpen()
     }, 7000);  
     const timer3=setTimeout(() => { 
@@ -46,16 +55,26 @@ export default function FormDialog(props) {
     <div>
     {SelectedFile ? <div>
           <p>File Name: {SelectedFile.name}</p>        
-          <p>File Type: {SelectedFile.type}</p>         
+          <p>File Type: {SelectedFile.type}</p> 
+          <p>Document: {props.card}</p>         
        </div>:""}
       <div style={{textAlign:"center"}}>
-      {SelectedFile ?
+      {Show ? 
+       <div className={classes.btnBox}>
+          <Button variant="contained"  className={classes.btn2} onClick={handleChangeUpload} startIcon={<CloudUploadIcon />}>
+            UPLOAD
+          </Button>
+          <Button variant="contained" className={classes.btn3} onClick={handleClick} startIcon={<CloudUploadIcon />}>
+            CHOOSE FILE
+          </Button>
+        </div>
+     :SelectedFile ?
        <Button variant="contained" disabled  className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
-       UPLOAD
+       CHOOSE FILE
      </Button>
        :
        <Button variant="contained"  className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
-       UPLOAD
+         CHOOSE FILE
      </Button>}
       </div>
     <input type="file"
@@ -63,19 +82,6 @@ export default function FormDialog(props) {
           onChange={handleChange}
           style={{display:'none'}} 
     /> 
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className={classes.dialog}>
-        <DialogContent>
-          <Typography align="center">
-          <img src={Tick} className={classes.tick}></img>
-          </Typography>
-          <Typography className={classes.heading}>UPLOADED SUCCESSFULLY</Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-                OK  
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 }
@@ -89,10 +95,32 @@ const useStyles = makeStyles((theme) => ({
       marginTop:20,
       marginBottom:80,
       borderRadius:8,
+      width:250,
+      "&:hover": {
+        backgroundColor:"#5b52ea",
+      }
+    },
+    btn2:{
+      backgroundColor:"#6C63FF",
+      color:"white",
+      fontWeight: 600,
+      letterSpacing:"0.1em",
+      marginTop:20,
+      marginBottom:80,
+      borderRadius:8,
       width:200,
       "&:hover": {
         backgroundColor:"#5b52ea",
       }
+    },
+    btn3:{
+      fontWeight: 600,
+      letterSpacing:"0.1em",
+      marginTop:20,
+      marginBottom:80,
+      borderRadius:8,
+      width:200,
+
     },
     heading: {
       fontWeight: "bold",
@@ -105,10 +133,11 @@ const useStyles = makeStyles((theme) => ({
         marginTop:20
      } 
   },
-  dialog:{
-      
-      '@media screen and (max-width: 1024px)': {
-          width: "100%",
-       } 
+  btnBox:{
+    display:"flex",
+    justifyContent:"space-between",
+    '@media screen and (max-width: 1024px)': {
+      display:"block",
+   } 
   }
 }));

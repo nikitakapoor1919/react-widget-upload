@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
 import { Typography } from '@material-ui/core';
 export default function ContentContainer() {
-    const [value, setValue] = React.useState('aadhar');
+    const [value, setValue] = React.useState('aadhar card');
     const [progress, setProgress] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
     
@@ -24,20 +24,20 @@ export default function ContentContainer() {
       <div className={classes.root}>
       <div className={classes.container}>
       {progress ? <div style={{textAlign:"center"}}> <CircularProgress/></div> :''}
-      {success ? <Alert severity="success">Your Document is Uploaded Successfully</Alert> :''}
+      {success ? <Alert severity="success">Please Click on Upload</Alert> :''}
         <Typography className={classes.heading}>
           SELECT A DOCUMENT TO PROCEED
         </Typography>
         <FormControl className={classes.form}
          component="fieldset">
         <RadioGroup aria-label="document" name="document" value={value} onChange={handleChange} className={classes.radio}>
-          <FormControlLabel value="aadhar" control={<Radio style={{color:"#6C63FF"}}/>} label="Aadhar Card" className={classes.heading2}/>
-          <FormControlLabel value="pan" control={<Radio style={{color:"#6C63FF"}}/>} label="Pan Card" className={classes.heading2} />
-          <FormControlLabel value="voter" control={<Radio style={{color:"#6C63FF"}}/>} label="Voter Identity Card" className={classes.heading2} />
+          <FormControlLabel value="aadhar card" control={<Radio style={{color:"#6C63FF"}}/>} label="Aadhar Card" className={classes.heading2}/>
+          <FormControlLabel value="pan card" control={<Radio style={{color:"#6C63FF"}}/>} label="Pan Card" className={classes.heading2} />
+          <FormControlLabel value="voter card" control={<Radio style={{color:"#6C63FF"}}/>} label="Voter Identity Card" className={classes.heading2} />
           <FormControlLabel value="passport" control={<Radio style={{color:"#6C63FF"}}/>} label="Passport" className={classes.heading2} />
-          <FormControlLabel value="driving" control={<Radio style={{color:"#6C63FF"}}/>} label="Driving Licence" className={classes.heading2} />
+          <FormControlLabel value="driving licence" control={<Radio style={{color:"#6C63FF"}}/>} label="Driving Licence" className={classes.heading2} />
         </RadioGroup>
-        <FormDialog onProgressChange={onChange} onSuccessChange={onChangeSuccess}/>
+        <FormDialog onProgressChange={onChange} card={value} onSuccessChange={onChangeSuccess}/>
       </FormControl>
       </div>
       </div>
