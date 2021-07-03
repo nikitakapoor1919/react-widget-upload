@@ -44,14 +44,16 @@ export default function FormDialog(props) {
           <p>File Name: {SelectedFile.name}</p>        
           <p>File Type: {SelectedFile.type}</p>         
        </div>:""}
+      <div style={{textAlign:"center"}}>
       {SelectedFile ?
-       <Button variant="contained" disabled fullWidth className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
+       <Button variant="contained" disabled  className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
        UPLOAD
      </Button>
        :
-       <Button variant="contained" fullWidth className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
+       <Button variant="contained"  className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
        UPLOAD
      </Button>}
+      </div>
     <input type="file"
           ref={hiddenFileInput}
           onChange={handleChange}
@@ -83,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop:20,
       marginBottom:80,
       borderRadius:8,
+      width:200,
       "&:hover": {
         backgroundColor:"#5b52ea",
       }
