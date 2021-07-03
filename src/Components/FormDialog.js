@@ -61,12 +61,15 @@ export default function FormDialog(props) {
       <div style={{textAlign:"center"}}>
       {Show ? 
        <div className={classes.btnBox}>
-          <Button variant="contained"  className={classes.btn2} onClick={handleChangeUpload} startIcon={<CloudUploadIcon />}>
+          <div><Button variant="contained"  className={classes.btn2} onClick={handleChangeUpload} startIcon={<CloudUploadIcon />}>
             UPLOAD
           </Button>
+          </div>
+          <div>
           <Button variant="contained" className={classes.btn3} onClick={handleClick} startIcon={<CloudUploadIcon />}>
             CHOOSE FILE
           </Button>
+          </div>
         </div>
      :SelectedFile ?
        <Button variant="contained" disabled  className={classes.btn} onClick={handleClick} startIcon={<CloudUploadIcon />}>
@@ -134,10 +137,6 @@ const useStyles = makeStyles((theme) => ({
      } 
   },
   btnBox:{
-    display:"flex",
-    justifyContent:"space-evenly",
-    '@media screen and (max-width: 550px)': {
-      display:"block",
-   } 
+    display:"block",
   }
 }));
