@@ -52,7 +52,7 @@ export default function FormDialog(props) {
   };
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
     {SelectedFile ? <div>
           <p>File Name: {SelectedFile.name}</p>        
           <p>File Type: {SelectedFile.type}</p> 
@@ -87,13 +87,15 @@ export default function FormDialog(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+    marginBottom:80,
+  },
   btn:{
       backgroundColor:"#6C63FF",
       color:"white",
       fontWeight: 600,
       letterSpacing:"0.1em",
       marginTop:20,
-      marginBottom:80,
       borderRadius:8,
       width:250,
       "&:hover": {
@@ -106,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       letterSpacing:"0.1em",
       marginTop:20,
-      marginBottom:80,
       borderRadius:8,
       width:200,
       "&:hover": {
@@ -117,7 +118,6 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       letterSpacing:"0.1em",
       marginTop:20,
-      marginBottom:80,
       borderRadius:8,
       width:200,
 
@@ -135,8 +135,8 @@ const useStyles = makeStyles((theme) => ({
   },
   btnBox:{
     display:"flex",
-    justifyContent:"space-between",
-    '@media screen and (max-width: 1024px)': {
+    justifyContent:"space-evenly",
+    '@media screen and (max-width: 800px)': {
       display:"block",
    } 
   }
