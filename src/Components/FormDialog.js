@@ -7,12 +7,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tick from "../images/tick.gif"
 import { Typography } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { useHistory } from 'react-router-dom';
 
 export default function FormDialog(props) {
   const [open, setOpen] = React.useState(false);
   const hiddenFileInput = React.useRef(null);
   const [SelectedFile, setSelectedFile] = React.useState(null);
-  
+  const history=useHistory()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,6 +37,9 @@ export default function FormDialog(props) {
       props.onSuccessChange(true)
       handleClickOpen()
     }, 7000);  
+    const timer3=setTimeout(() => { 
+     history.push('/next');
+  }, 5000)
   };
   const classes = useStyles();
   return (
