@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing:"0.1em",
       marginTop:20,
       borderRadius:8,
-      width:175,
+      width:200,
       "&:hover": {
         backgroundColor:"#5b52ea",
       }
@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing:"0.1em",
       marginTop:20,
       borderRadius:8,
-      width:175,
+      width:200,
 
     },
     heading: {
