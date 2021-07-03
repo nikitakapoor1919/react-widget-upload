@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing:"0.1em",
       marginTop:20,
       borderRadius:8,
-      width:200,
+      width:175,
       "&:hover": {
         backgroundColor:"#5b52ea",
       }
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing:"0.1em",
       marginTop:20,
       borderRadius:8,
-      width:200,
+      width:175,
 
     },
     heading: {
@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
   btnBox:{
     display:"flex",
     justifyContent:"space-evenly",
-    '@media screen and (max-width: 800px)': {
+    '@media screen and (max-width: 550px)': {
       display:"block",
    } 
   }
