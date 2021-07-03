@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container:{
     paddingRight:100,
-    paddingTop:100,
+    paddingTop:60,
     '@media screen and (max-width: 1024px)': {
       paddingRight:0,
    } 
