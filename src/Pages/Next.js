@@ -19,7 +19,8 @@ const Next = () => {
 
 const useStyles = makeStyles((theme) => ({
       root:{
-        marginTop:40
+        marginTop:40,
+        marginBottom:60
       },
       heading: {
         fontWeight: "bold",
